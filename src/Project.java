@@ -30,7 +30,7 @@ public class Project {
                 printBoard();
 
                 if (currentState == CROSS_WON){
-                    System.out.println("'X' Won! Buhbye!");
+                    System.out.println("'X' Vann! Buhbye!");
                 } else if (currentState == NOUGHT_WON){
                     System.out.println("'Nought' Won! Baibai!")
                 } else if (currentState == DRAW){
@@ -61,6 +61,14 @@ public class Project {
             int row =  in.nextInt() - 1;
             int col = in.nextInt() - 1;
             if (row >= 0 && row < ROWS && col >= 0 && col < COLS && board[row][col] == EMPTY){
+                currentRow = row;
+                currentCol = col;
+                board[currentRow][currentCol] = theSeed;
+                validInput = true;
+            } else {
+                System.out.println("Ditt drag (" +(row + 1) + "," + (col + 1)+ ") är inte giltigt. Försök igen...")
+            }
+            while (!validInput);
 
         }
     }
