@@ -27,7 +27,17 @@ public class Project {
             do {
                 playerMove (currentPlayer);
                 updateGame (currentPlayer, currentRow, currentCol);
-            }
+                printBoard();
+
+                if (currentState == CROSS_WON){
+                    System.out.println("'X' Won! Buhbye!");
+                } else if (currentState == NOUGHT_WON){
+                    System.out.println("'Nought' Won! Baibai!")
+                } else if (currentState == DRAW){
+                    System.out.println("Nobody wins! Get'em outta here!");
+                }
+                currentPlayer = (currentPlayer == CROSS) ? NOUGHT : CROSS;
+            }   while (currentState == PLAYING);
         }
 
     private static void initGame() {
@@ -38,6 +48,21 @@ public class Project {
         }
         currentState = PLAYING;
         currentPlayer = CROSS;
+    }
+
+    public static void playerMove (int theSeed){
+        boolean validInput = false;
+        do {
+            if (theSeed == CROSS) {
+                System.out.print("Player 'X', enter your move (row[1-3] column[1-3]):");
+            } else {
+                System.out.print("Player 'O', enter your move (row[1-3] column[1-3]):");
+            }
+            int row =  in.nextInt() - 1;
+            int col = in.nextInt() - 1;
+            if (row >= 0 && row < ROWS && col >= 0 && col < COLS && board[row][col] == EMPTY){
+
+        }
     }
 
 }
